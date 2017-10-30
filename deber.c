@@ -1,4 +1,3 @@
-
 #include <stdio.h>
 #define MAXLINE 1000
 
@@ -9,7 +8,6 @@ int contarPalabras(char str[]);
 
 int main()
 {
-/* Taller Oswaldo Aguilar y Alex Macas*/
 int len;
 int max;
 int caracteres;
@@ -17,7 +15,10 @@ int palabras;
 char line[MAXLINE];
 char longest[MAXLINE];
 max = 0;
+int opcion;
+opcion = 1;
 
+printf("Ingrese todas las cadenas para encontrar la frase más larga(Ctrl + D) cuando ingreso todas:\n");
 while((len = getline2(line, MAXLINE))>0)
 	if(len>max){
 	    max = len;
@@ -26,15 +27,28 @@ while((len = getline2(line, MAXLINE))>0)
 
 if(max>0)
 {
-	printf("%s",longest);
-	caracteres = contarCaracteres(longest);
-	printf("El numero de caracteres de la cadena mayor es %d\n", caracteres);
-	palabras = contarPalabras(longest);
-	printf("El numero de palabras de la cadena mayor es %d\n", palabras);
-	printf("Gracias por Usar el programa");
+	while(opcion != 3){
+		printf("\n-------------------------------------------------------------");
+		printf("\nLa frase más larga es %s",longest);
+		printf("\n\t\t Menu\n 1.- Contar Caracteres\n 2.- Contar Palabras\n 3.- Salir\n");
+		printf("Que desea hacer: ");
+		scanf("%d", &opcion);
+		if(opcion == 1)
+		{
+			caracteres = contarCaracteres(longest);
+			printf("\nEl numero de caracteres de la cadena mayor es %d\n", caracteres);
 		}
+		if(opcion == 2){
+			palabras = contarPalabras(longest);
+			printf("\nEl numero de palabras de la cadena mayor es %d\n", palabras);
+		}
+		if(opcion == 3){
+			printf("\nGracias por Usar el programa\n");
+		}
+	}
 
 return 0;
+}
 }
 
 int getline2(char s[], int lim)
